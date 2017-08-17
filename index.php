@@ -6,6 +6,7 @@ if (isset($_POST['submit'])) {
     
     if (!isset($_SESSION["hash"])) {
         $_SESSION["hash"] = array();
+        $_SESSION["hash"][] = ",$tag";
     } else {
         $_SESSION["hash"][] = ",$tag";
     }
@@ -41,11 +42,13 @@ if (isset($_GET['delete'])) {
         <article id="hashWrap">
             <header><h3>Tags</h3></header>
             <?php
-            foreach ($_SESSION["hash"] as $key => $yo) {
-                echo "<div class='divTags'>";
-                echo "<p>";
-                echo str_replace(",", "", $yo);
-                echo "</p><a href='?delete=$key'>&#x2716;</a></div>";
+            if (isset($_SESSION["hash"])) {
+                foreach ($_SESSION["hash"] as $key => $yo) {
+                    echo "<div class='divTags'>";
+                    echo "<p>";
+                    echo str_replace(",", "", $yo);
+                    echo "</p><a href='?delete=$key'>&#x2716;</a></div>";
+                }
             }
             ?>
         </article>
