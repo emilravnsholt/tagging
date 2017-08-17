@@ -1,2 +1,2 @@
-# test
-this is a test
+# Tagging function
+PHP is the best!
